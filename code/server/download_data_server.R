@@ -104,11 +104,15 @@ observeEvent(input$view_data_w, {
 ###--------------------------------------------accept and save the withdrawals data---------------------------------
 observeEvent(input$accept_data_w, {
   
-  #read old data file
-  withdrawals.df <- data.table::fread(paste0(ts_path, "coop_pot_withdrawals.csv"),
-                                  data.table = FALSE)
-  #write old dataframe to old dataframe location 
-  write.csv(withdrawals.df, paste0(ts_path, "download_data_w_old.csv"), row.names=FALSE)
+  if(file.exists(paste0(ts_path, "coop_pot_withdrawals_unformatted.csv"))){
+  
+    #read old data file
+    withdrawals.df <- data.table::fread(paste0(ts_path, "coop_pot_withdrawals_unformatted.csv"),
+                                    data.table = FALSE)
+    #write old dataframe to old dataframe location 
+    write.csv(withdrawals.df, paste0(ts_path, "download_data_w_old.csv"), row.names=FALSE)
+    
+  } # end of if(file.exists...)
   
   #read temp file(grabbing the data that has added dummy rows and is still in wide format)
   withdrawals.df <- data.table::fread(paste0(ts_path, "download_data_w_actual.csv"),
