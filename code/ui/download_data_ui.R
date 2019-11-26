@@ -91,7 +91,7 @@ tabPanel("Download Data",
                  ) # box end
                ) # this is the end of row with flows hourly data
                
-             ) # this is the end of 2nd main column
+             ) # this is the end of 6th main column
              
              
            ) # end of major column that contains whole body
